@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\YearsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +16,8 @@ use App\Http\Controllers\AboutController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home.index');
 });
 Route::get('/about', [AboutController::class,'about']);
+Route::get('/years',[YearsController::class, 'years']);
 

@@ -37,7 +37,7 @@
                 </div>
             @endif --}}
 
-            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
+            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8 minwidth">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <svg viewBox="0 0 651 192" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-16 w-auto text-gray-700 sm:h-20">
                         <g clip-path="url(#clip0)" fill="#EF3B2D">
@@ -60,7 +60,7 @@
                             <a class="nav-link" href="/about">About</a>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link" href="#">Another Link</a>
+                            <a class="nav-link" href="/years">List of years</a>
                           </li>
                       </ul>
                     </div>

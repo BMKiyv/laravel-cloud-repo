@@ -13,13 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('photos', function (Blueprint $table) {
+        Schema::create('languages', function (Blueprint $table) {
             $table->id();
-            $table->string('src');
-            $table->bigInteger('years_id')->unsigned();
+            $table->string('langname');
+            $table->string('specific');
             $table->timestamps();
 
-            $table->foreign('years_id')->references('id')->on('years');
+            //$table->unsignedBigInteger('name_id');
+            $table->foreignId('name_id')->constrained('names');
+            //$table->foreign('name_id')->references('id')->on('names');
         });
     }
 
@@ -30,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('photos');
+        Schema::dropIfExists('languages');
     }
 };

@@ -3,6 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\YearsController;
+use App\Http\Controllers\NameController;
+use App\Models\Language;
+use App\Models\Name;
+use App\Http\Controllers\API\FileUploadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,4 +24,8 @@ Route::get('/', function () {
 });
 Route::get('/about', [AboutController::class,'about']);
 Route::get('/years',[YearsController::class, 'years']);
+Route::get('/years/{year}',[YearsController::class, 'year']);
+Route::get('/name', [NameController::class, 'index']);
+Route::get('file-upload', [FileUploadController::class, 'index']);
+Route::post('file-upload', [FileUploadController::class, 'store'])->name('file.store');
 

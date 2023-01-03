@@ -13,11 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('files', function (Blueprint $table) {
+        Schema::create('stds', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('path');
+            $table->bigInteger('years_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('years_id')->references('id')->on('years');
         });
     }
 
@@ -28,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('files');
+        Schema::dropIfExists('stds');
     }
 };

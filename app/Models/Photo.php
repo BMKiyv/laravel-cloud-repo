@@ -3,19 +3,23 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Year;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Photo extends Model
 {
-    protected $fillable = ['src', 'years_id'];
+    use HasFactory;
 
-    public function years()
-    {
-        return $this->hasMany(Photo::class);
+    protected $fillable = [
+        'path',
+        'filename',
+        'std_id',
+    ];
+
+
+    public function std_id () {
+        return $this->belongsTo(Std::class);
     }
-
-    public function years_id()
-    {
-        return $this->belongsTo(Year::class);
+    public function filename () {
+        return $this->belongsTo(Std::class);
     }
 }

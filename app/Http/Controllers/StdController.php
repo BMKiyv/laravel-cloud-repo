@@ -21,7 +21,6 @@ class StdController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update (Request $request, $year, $std) {
-       // dd($request,$year,$std);
 
         $fileName= $request->file?$request->file->getClientOriginalName():'';
        $show_std = Std::where('name',$std)->get()[0];

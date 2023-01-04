@@ -9,16 +9,18 @@
 @else
     @foreach ($show_files as $el)
     <div class="data-container">
-       <div class="row mt-5 mb-1"><div class="col-7">{{$el->filename}}</div>
-       <a href="{{route('std-download',['std'=>$std,'year'=>$year,'name'=>$el->filename])}}" style="display: contents;"><button class="btn btn-success col-2 mr-2">Скачати</button></a>
-       <a href="{{route('std-delete',['std'=>$std,'year'=>$year,'name'=>$el->filename])}}" style="display: contents;"><button class="btn btn-danger col-2">Видалити</button></a>
-       @if (count($errors) > 0)
-       <div class="alert alert-danger">
-           <ul>
-               @foreach ($errors->all() as $error)
-                   <li>{{ $error }}</li>
-               @endforeach
-           </ul>
+       <div class="row mt-3 mb-1 row-file">
+            <div class="col-5">{{$el->filename}}</div>
+            <a href="{{route('std-download',['std'=>$std,'year'=>$year,'name'=>$el->filename])}}" style="display: contents;"><button class="btn btn-success col-2 mr-2">Скачати</button></a>
+            <a href="{{route('std-delete',['std'=>$std,'year'=>$year,'name'=>$el->filename])}}" style="display: contents;"><button class="btn btn-danger col-2 mr-2">Видалити</button></a>
+            <a href="{{route('view',['std'=>$std,'year'=>$year,'name'=>$el->filename])}}" style="display: contents;"><button class="btn btn-info col-2">Подивитись</button></a>
+            @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
        </div>
    @endif
     </div>

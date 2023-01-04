@@ -52,16 +52,16 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                       <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                          <a class="nav-link" href="/">Головна</a>
+                          <a class="nav-link navigation" href="/">Головна</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="/file-upload">Загрузити файл</a>
+                          <a class="nav-link navigation" href="/file-upload">Загрузити файл</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/about">Про нас</a>
+                            <a class="nav-link navigation" href="/about">Про нас</a>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link" href="/years">Список</a>
+                            <a class="nav-link navigation" href="/years">Список</a>
                           </li>
                       </ul>
                     </div>

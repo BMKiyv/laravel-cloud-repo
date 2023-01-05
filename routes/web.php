@@ -34,3 +34,4 @@ Route::get('file-upload', [FileUploadController::class, 'index'])->name('file');
 Route::get('file-view', [FileUploadController::class, 'view'])->name('view');
 Route::post('file-upload', [FileUploadController::class, 'store'])->name('file.store');
 
+Route::resource('/companies', 'CompanyController');

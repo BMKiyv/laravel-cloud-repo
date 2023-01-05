@@ -12,6 +12,14 @@ class StdController extends Controller
     public function std ($year, $std) {
         $show_std_id = Std::where('name',$std)->get()[0]->id;
         $show_files = Std::find($show_std_id)->filename;
+        if (isset($_GET['name'])){
+            //$show_std = Year::where('years_id', $id_year)->where('name', 'LIKE', "%{$_GET['name']}%")->get();
+            dd($_GET['name']);
+            
+           }
+           else {
+            $show_std = Std::where('name',$std)->get();
+           }
         return view('years.std', ['year'=>$year, 'std' => $std,'show_files'=> $show_files]);
 
     }

@@ -37,22 +37,78 @@ a{
     font-size: 18px;
     color: cadetblue;
 }
-a:hover{
-    color: cornflowerblue;
+.nav-link:hover{
+    color: whitesmoke;
 }
 
 .row-file{
     background-color: darkgrey;
     padding: 10px;
+    display: flex;
+    justify-content: space-around;
 }
 
 .navigation{
-    color: slategray;
-    font-size: 20px;
+    color: rgb(41, 98, 129);
+    font-size: 22px;
+    font-weight: bold;
+      text-shadow: 0 13.36px 8.896px #c4b59d,0 -2px 1px rgb(241, 236, 105);
 }
+.navigation:hover{ 
+  -webkit-animation: neon3 1.5s ease-in-out infinite alternate;
+  -moz-animation: neon3 1.5s ease-in-out infinite alternate;
+  animation: neon3 1.5s ease-in-out infinite alternate; 
+}
+
+@keyframes neon3 {
+  from {
+    text-shadow: 0 0 10px #fff,
+               0 0 20px  #fff,
+               0 0 30px  #fff,
+               0 0 40px  #FFDD1B,
+               0 0 70px  #FFDD1B,
+               0 0 80px  #FFDD1B,
+               0 0 100px #FFDD1B,
+               0 0 150px #FFDD1B;
+  }
+  to {
+    text-shadow: 0 0 5px #fff,
+               0 0 10px #fff,
+               0 0 15px #fff,
+               0 0 20px #FFDD1B,
+               0 0 35px #FFDD1B,
+               0 0 40px #FFDD1B,
+               0 0 50px #FFDD1B,
+               0 0 75px #FFDD1B;
+  }
+}
+
 
 .navbar-light{
-    background-image: url('../../public/images/image2.jpg');
+    // background-image: url('../../public/images/image11.jpg');
+     background-repeat: no-repeat;
+     background-size: cover;
+     background-position: center;
+    background: linear-gradient(to right, rgba(241,236,105,0.8), rgba(17, 190, 213,0.3));
 }
 
-
+.shadow-block{
+    font-style: italic;
+    padding: 10px;
+    font-size: 20px;
+    text-shadow: 
+      1px -1px 0 #767676, 
+      -1px 2px 1px #737272;
+}
+.footer-container{
+    margin: 0 auto;
+    max-width: 1200px;
+    height: 100vh;
+}
+.footer{
+   position: fixed;
+   display: flex;
+   width: 100%;
+   justify-content: center;
+    bottom: 30px;
+}

@@ -9,18 +9,18 @@ use App\Models\Std;
 
 class YearsController extends Controller
 {
-    public function years () {
+    public function index () {
         $years = Year::all();
         return view('years.index', ['years'=>$years]);
     }
-    public function year ($year) {
+    public function show ($year) {
        $_year = Year::where('year','=', $year)->get()[0];
        $show_year = $_year->year;
        $id_year = $_year->id;
        $show_std = Std::where('years_id','=', $id_year)->get();
         return view('years.year', ['std'=>$show_std, 'year'=>$show_year]);
     }
-    public function update (UpdateYearsRequest $request, $year) {
+    public function store (UpdateYearsRequest $request, $year) {
         $std = new Std();
         $id_year = Year::where('year', $year)->get('id')[0]->id;
         $new_path = $year . "/" . $request->input('name');
@@ -40,7 +40,7 @@ class YearsController extends Controller
             }
         }
         $std->save();
-        return redirect()->route('years.year',$year)->with('success', 'Підприємство було успішно створено');
+        return redirect()->route('years.show',$year)->with('success', 'Підприємство було успішно створено');
     }
 
 }

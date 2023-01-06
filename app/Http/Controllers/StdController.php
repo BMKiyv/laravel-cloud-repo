@@ -9,18 +9,21 @@ use Illuminate\Support\Facades\Storage;
 
 class StdController extends Controller
 {
-    public function std ($year, $std) {
-        $show_std_id = Std::where('name',$std)->get()[0]->id;
-        $show_files = Std::find($show_std_id)->filename;
+    public function index ($year, $std) {
+        $show_std = Std::where('name',$std)->get()[0];
+        $std_id = $show_std->id;
+        $show_files = $show_std->filename;
         if (isset($_GET['name'])){
-            //$show_std = Year::where('years_id', $id_year)->where('name', 'LIKE', "%{$_GET['name']}%")->get();
-            dd($_GET['name']);
             
+            $show_std = Photo::where('std_id', $std_id)->where('filename', 'LIKE', "%{$_GET['name']}%")->get();
+            $show_files = $show_std;
+            //dd($_GET['name'],$show_std,$show_files);
+            return view('stds.index', ['year'=>$year, 'std' => $std,'show_files'=> $show_files]);
            }
            else {
-            $show_std = Std::where('name',$std)->get();
+            return view('stds.index', ['year'=>$year, 'std' => $std,'show_files'=> $show_files]);
            }
-        return view('years.std', ['year'=>$year, 'std' => $std,'show_files'=> $show_files]);
+        return view('stds.index', ['year'=>$year, 'std' => $std,'show_files'=> $show_files]);
 
     }
     /**

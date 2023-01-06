@@ -57,18 +57,15 @@
 </form>
 <form action="">
     <div class="row">
-        <div class="col-md-6" data-select2-id="56">
-            <div class="form-group" data-select2-id="55">
-                <label>Назва</label>
-                <input class="form-control " style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true"
+        <div class="col-12 flex" data-select2-id="56">
+            <div class="form-group col-6" data-select2-id="55">
+                <label>Фільтрувати</label>
+                <input class="form-control"  data-select2-id="1" tabindex="-1" aria-hidden="true"
                     type="text" name="name"
                     placeholder="частина або повний номер">
-
             </div>
-
-
-
+            <button type="submit" class="btn btn-success col-2 mt-3 fileinput-button dz-clickable">Фільтрувати</button>
         </div>
-        <button type="submit" class="btn btn-success col fileinput-button dz-clickable">Застосувати</button>
+       
     </form>
 @endsection

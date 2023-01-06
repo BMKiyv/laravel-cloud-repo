@@ -34,10 +34,10 @@
     </div>
 @endforeach
 @endif
-<h3 class="mt-2">Додати нові документи:</h3>
+<h3 class="mt-5">Додати нові документи:</h3>
 <form class="sendform" action="{{route('std-update',['std'=>$std, 'year'=>$year])}}" method="POST" enctype="multipart/form-data">
     @csrf
-    <div class="form-group">
+    <div class="form-group col-6">
         <label for="name">Виберіть файл:</label>
         <input class="form-control" type="file" id="name" name="file" value="" placeholder="Виберіть файл">
             @error('file')
@@ -55,17 +55,19 @@
 @endif
     <a href="{{route('std-update',['std'=>$std, 'year'=>$year])}}"><button type="submit" class="btn btn-primary mt-3">Додати</button></a>
 </form>
+<div class="mt-5">
 <form action="">
     <div class="row">
         <div class="col-12 flex" data-select2-id="56">
             <div class="form-group col-6" data-select2-id="55">
-                <label>Фільтрувати</label>
+                <label>Знайти необхідний файл</label>
                 <input class="form-control"  data-select2-id="1" tabindex="-1" aria-hidden="true"
                     type="text" name="name"
-                    placeholder="частина або повний номер">
+                    placeholder="частина або повна назва">
             </div>
             <button type="submit" class="btn btn-success col-2 mt-3 fileinput-button dz-clickable">Фільтрувати</button>
         </div>
        
     </form>
+</div>
 @endsection

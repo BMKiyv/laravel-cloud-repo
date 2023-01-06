@@ -18,6 +18,15 @@ class YearsController extends Controller
        $show_year = $_year->year;
        $id_year = $_year->id;
        $show_std = Std::where('years_id','=', $id_year)->get();
+       if (isset($_GET['name'])){
+            
+        $show_std = Std::where('years_id', $id_year)->where('name', 'LIKE', "%{$_GET['name']}%")->get();
+       // dd($_GET['name'],$show_std);
+        return view('years.year', ['std'=>$show_std, 'year'=>$show_year]);
+       }
+       else {
+        return view('years.year', ['std'=>$show_std, 'year'=>$show_year]);
+       }
         return view('years.year', ['std'=>$show_std, 'year'=>$show_year]);
     }
     public function store (UpdateYearsRequest $request, $year) {

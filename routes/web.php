@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\YearsController;
 use App\Http\Controllers\API\FileUploadController;
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\StdController;
 
 /*
@@ -20,6 +21,7 @@ use App\Http\Controllers\StdController;
 
 Route::get('/', [HomeController::class,'index']);
 Route::get('/about', [AboutController::class,'about']);
+Route::get('allstds', [CompanyController::class,'index']);
 Route::get('/years',[YearsController::class, 'index'])->name('years');
 Route::get('/years/{year}',[YearsController::class, 'show'])->name('years.show');
 Route::post('/years/{year}/update',[YearsController::class,'store'])->name('years.store');
@@ -33,4 +35,5 @@ Route::get('file-upload', [FileUploadController::class, 'index'])->name('file');
 Route::get('file-view', [FileUploadController::class, 'view'])->name('view');
 Route::post('file-upload', [FileUploadController::class, 'store'])->name('file.store');
 
-Route::resource('/companies', 'CompanyController');
+//Route::resource('/companies', 'CompanyController');
+

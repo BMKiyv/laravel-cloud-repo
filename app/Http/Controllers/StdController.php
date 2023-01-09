@@ -36,25 +36,40 @@ class StdController extends Controller
 
         $fileName= $request->file?$request->file->getClientOriginalName():'';
        $show_std = Std::where('name',$std)->get()[0];
-        $path = $show_std->path;
+        $path = $show_std->path;//1
         $id_std = $show_std->id;
+         $names = $show_std->filename->pluck('filename');
+         $truth = true;
+         if (count($names)>0){
+            foreach($names as $elem){
+               $elem===$fileName? $truth = false: $truth = true;
+            }             
+        }
+        if($truth){
+            $new_file = new File();
+            $new_file->path = $path;
+            $new_file->filename = $fileName;
+            $new_file->std_id = $id_std;
+            $request->file->storeAs( $path, $fileName, 'public');
+            Storage::setVisibility($fileName, 'public');
+    
+            $new_file -> save();
+            return back()
+            ->with('success','Файл було успішно завантажено')
+            ->with('file', $fileName);
+        }
+        else{
+            return back()
+            ->with('error','The file is exist already')
+            ->with('file', $fileName);
+        }
+        
 
-
-        $new_file = new File();
-        $new_file->path = $path;
-        $new_file->filename = $fileName;
-        $new_file->std_id = $id_std;
-        $request->file->storeAs( $path, $fileName, 'public');
-        Storage::setVisibility($fileName, 'public');
-        $new_file -> save();
-        return back()
-        ->with('success','Файл було успішно завантажено')
-        ->with('file', $fileName);
     }
     public function delete (Request $request, $year, $std) {
         $filename = $request->query()['name'];
         $show_std = Std::where('name',$std)->get()[0];
-        $path = $show_std->path;
+        $path = $show_std->path;//2
       $file_id = File::where('filename',$filename)->get()[0]->id;
       File::find($file_id)->delete();
         Storage::disk('public')->delete($path . '/' . $filename);
@@ -66,7 +81,7 @@ class StdController extends Controller
         $filename = $request->query()['name'];
         $filename = $filename;
         $show_std = Std::where('name',$std)->get()[0];
-        $path = $show_std->path;
+        $path = $show_std->path;//3
         
         return Storage::download($path . '/' . $filename);
     }
@@ -83,7 +98,6 @@ class StdController extends Controller
                 'value' => "Value"
             ]
         ];
-       // dd($filepath,$file_url,$name,$file_data);
         $file_viewer = new LaravelFileViewer();
         return $file_viewer->show($name, $filepath, $file_url, $file_data);
     }

@@ -31,9 +31,7 @@ Route::post('/years/{year}/{std}/update',[StdController::class,'update'])->name(
 Route::get('/years/{year}/{std}/delete',[StdController::class,'delete'])->name('std-delete');
 Route::get('/years/{year}/{std}/download',[StdController::class,'download'])->name('std-download');
 
-Route::get('file-upload', [FileUploadController::class, 'index'])->name('file');
-Route::get('file-view', [FileUploadController::class, 'view'])->name('view');
-Route::post('file-upload', [FileUploadController::class, 'store'])->name('file.store');
+Route::get('file-view', [StdController::class, 'view'])->name('view');
 
 //Route::resource('/companies', 'CompanyController');
 

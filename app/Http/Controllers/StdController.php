@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Std;
 use App\Models\Photo;
 use Illuminate\Support\Facades\Storage;
+use Vish4395\LaravelFileViewer\LaravelFileViewer;
 
 class StdController extends Controller
 {
@@ -68,6 +69,23 @@ class StdController extends Controller
         $path = $show_std->path;
         
         return Storage::download($path . '/' . $filename);
+    }
+    public function view(Request $request)
+    {
+        $name = $request->query()['name'];
+        $std = $request->query()['std'];
+        $year = $request->query()['year'];
+        $filepath =  $year . '/' . $std . '/' . $name;
+        $file_url = asset('storage/' . $filepath);
+        $file_data = [
+            [
+                'label' => __('Label'),
+                'value' => "Value"
+            ]
+        ];
+       // dd($filepath,$file_url,$name,$file_data);
+        $file_viewer = new LaravelFileViewer();
+        return $file_viewer->show($name, $filepath, $file_url, $file_data);
     }
    
 };

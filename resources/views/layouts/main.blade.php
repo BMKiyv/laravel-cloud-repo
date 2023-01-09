@@ -59,7 +59,7 @@
         <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
 
             <footer class="footer">
-                <b>Povered by</b> відділ цифрових трансформацій Департаменту розвитку туризма ДАРТ
+                <b>Developed by</b> відділ цифрових трансформацій Департаменту розвитку туризма ДАРТ України
             </footer>
         </div>
     </body>

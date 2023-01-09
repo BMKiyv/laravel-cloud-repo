@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\YearsController;
-use App\Http\Controllers\API\FileUploadController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\StdController;
 

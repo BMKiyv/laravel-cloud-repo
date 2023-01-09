@@ -11,11 +11,11 @@ class Std extends Model
 
     protected $fillable = ['name', 'years_id', 'path'];
 
-    public function photos() {
-        return $this->hasMany(Photo::class);
+    public function files() {
+        return $this->hasMany(File::class);
     }  
     public function filename () {
-        return $this->hasMany(Photo::class);
+        return $this->hasMany(File::class);
     }
 
 }

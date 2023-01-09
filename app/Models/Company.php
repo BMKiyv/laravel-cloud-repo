@@ -13,8 +13,8 @@ class Company extends Model
 
     protected $fillable = ['name', 'years_id', 'path'];
 
-    public function photos() {
-        return $this->hasMany(Photo::class);
+    public function files() {
+        return $this->hasMany(File::class);
 }
 
 public static function uploadImage(Request $request, $image = null)

@@ -8,7 +8,7 @@ use App\Models\Std;
 
 class Year extends Model
 {
-    //use HasFactory;
+    use HasFactory;
     protected $fillable = ['year'];
 
     public function years()

@@ -3,7 +3,7 @@
 namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
-use App\Models\Photo;
+use App\Models\File;
 
 class isValidExistsRule implements Rule
 {
@@ -27,7 +27,7 @@ class isValidExistsRule implements Rule
     public function passes($attribute, $value)
     {
         $filename = $value->file->getClientOriginalName();
-        $names = Photo::pluck('filename');
+        $names = File::pluck('filename');
        static $answer = false;
         foreach($names as $name){
             global $answer,$filename;

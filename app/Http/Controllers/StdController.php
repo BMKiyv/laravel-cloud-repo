@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Std;
-use App\Models\Photo;
+use App\Models\File;
 use Illuminate\Support\Facades\Storage;
 use Vish4395\LaravelFileViewer\LaravelFileViewer;
 
@@ -16,7 +16,7 @@ class StdController extends Controller
         $show_files = $show_std->filename;
         if (isset($_GET['name'])){
             
-            $show_std = Photo::where('std_id', $std_id)->where('filename', 'LIKE', "%{$_GET['name']}%")->get();
+            $show_std = File::where('std_id', $std_id)->where('filename', 'LIKE', "%{$_GET['name']}%")->get();
             $show_files = $show_std;
             //dd($_GET['name'],$show_std,$show_files);
             return view('stds.index', ['year'=>$year, 'std' => $std,'show_files'=> $show_files]);
@@ -40,7 +40,7 @@ class StdController extends Controller
         $id_std = $show_std->id;
 
 
-        $new_file = new Photo();
+        $new_file = new File();
         $new_file->path = $path;
         $new_file->filename = $fileName;
         $new_file->std_id = $id_std;
@@ -55,8 +55,8 @@ class StdController extends Controller
         $filename = $request->query()['name'];
         $show_std = Std::where('name',$std)->get()[0];
         $path = $show_std->path;
-      $file_id = Photo::where('filename',$filename)->get()[0]->id;
-      Photo::find($file_id)->delete();
+      $file_id = File::where('filename',$filename)->get()[0]->id;
+      File::find($file_id)->delete();
         Storage::disk('public')->delete($path . '/' . $filename);
         return back()
         ->with('success','Файл було успішно deleted')

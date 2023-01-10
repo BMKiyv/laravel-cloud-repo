@@ -21,9 +21,9 @@
             <label for="name">Назва папки</label>
             <input type="text" class="form-control" id="name" name="name" value="" placeholder="Введіть назву папки">
         </div>
+        <a href="{{route('years.store',$year)}}"><button type="submit" class="btn btn-primary mt-3">Створити</button></a>
     </div>
-    <a href="{{route('years.store',$year)}}"><button type="submit" class="btn btn-primary mt-3">Створити</button></a>
-    {{-- <a href="{{route('formdata-update',$data->id)}}"><button type="submit" class="btn btn-primary mt-3">Редагувати</button></a> --}}
+   
 </form>
 <form action="" class="mt-5">
     <div class="row">
@@ -34,7 +34,7 @@
                     type="text" name="name"
                     placeholder="частина або повна назва">
             </div>
-            <button type="submit" class="btn btn-success col-2 mt-3 fileinput-button dz-clickable">Фільтрувати</button>
+            <button type="submit" class="btn mt-3 btn-secondary">Фільтрувати</button>
         </div>
        
     </form>

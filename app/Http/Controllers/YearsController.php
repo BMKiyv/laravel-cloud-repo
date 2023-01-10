@@ -20,7 +20,7 @@ class YearsController extends Controller
        $show_std = Std::where('years_id','=', $id_year)->paginate(2);
        if (isset($_GET['name'])){
             
-        $show_std = Std::where('years_id', $id_year)->where('name', 'LIKE', "%{$_GET['name']}%")->get();
+        $show_std = Std::where('years_id', $id_year)->where('name', 'LIKE', "%{$_GET['name']}%")->paginate(2);
        // dd($_GET['name'],$show_std);
         return view('years.year', ['std'=>$show_std, 'year'=>$show_year]);
        }

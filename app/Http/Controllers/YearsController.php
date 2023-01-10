@@ -17,7 +17,7 @@ class YearsController extends Controller
        $_year = Year::where('year','=', $year)->get()[0];
        $show_year = $_year->year;
        $id_year = $_year->id;
-       $show_std = Std::where('years_id','=', $id_year)->get();
+       $show_std = Std::where('years_id','=', $id_year)->paginate(2);
        if (isset($_GET['name'])){
             
         $show_std = Std::where('years_id', $id_year)->where('name', 'LIKE', "%{$_GET['name']}%")->get();

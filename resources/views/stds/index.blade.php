@@ -33,6 +33,7 @@
     </div>
     </div>
 @endforeach
+<div>{{$show_files->links()}}</div>
 @endif
 <h3 class="mt-5">Додати нові документи:</h3>
 <form class="sendform" action="{{route('std-update',['std'=>$std, 'year'=>$year])}}" method="POST" enctype="multipart/form-data">

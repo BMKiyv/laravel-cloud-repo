@@ -8,9 +8,10 @@
 @else
     @foreach ($std as $el)
     <div class="data-container">
-       <a href="{{ '/years' . '/' . $el[1] . '/' . $el[0]}}"> <div>{{$el[0]}}</div></a>
+       <a href="{{ '/years' . '/' . $el->path}}"> <div>{{$el->name}}</div></a>
     </div>
 @endforeach
+<div>{{$std->links()}}</div>
 @endif
 
 <form action="" class="mt-5">

@@ -11,6 +11,7 @@
        <a href="{{ '/years' . '/' . $year . '/' . $el->name}}"> <div>{{$el->name}}</div></a>
     </div>
 @endforeach
+<div>{{$std->links()}}</div>
 @endif
 <h3>Створити нове зареєстроване підрпиємство</h3>
 <form class="sendform" action="{{route('years.store',$year)}}" method="post">

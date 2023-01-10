@@ -11,20 +11,17 @@ use Vish4395\LaravelFileViewer\LaravelFileViewer;
 class StdController extends Controller
 {
     public function index ($year, $std) {
-        $show_std = Std::where('name',$std)->get()[0];
-        $std_id = $show_std->id;
-        $show_files = $show_std->filename;
+        $show_std = Std::where('name',$std)->get()[0]->id;
+        $show_files = File::where('std_id',$show_std)->orderBy('filename')->paginate(2);
         if (isset($_GET['name'])){
             
-            $show_std = File::where('std_id', $std_id)->where('filename', 'LIKE', "%{$_GET['name']}%")->get();
-            $show_files = $show_std;
-            //dd($_GET['name'],$show_std,$show_files);
+            $show_files = File::where('std_id', $show_std)->where('filename', 'LIKE', "%{$_GET['name']}%")->paginate(2);
             return view('stds.index', ['year'=>$year, 'std' => $std,'show_files'=> $show_files]);
            }
            else {
+            //dd($show_std,$show_files);
             return view('stds.index', ['year'=>$year, 'std' => $std,'show_files'=> $show_files]);
            }
-        return view('stds.index', ['year'=>$year, 'std' => $std,'show_files'=> $show_files]);
 
     }
     /**

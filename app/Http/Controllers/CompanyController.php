@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class CompanyController extends Controller
 {
     public function index () {
-        $std = Std::all();
+        $std = Std::paginate(2);
         $show_year = Year::pluck('year', 'id');
         if (isset($_GET['name'])){
             
@@ -26,18 +26,19 @@ class CompanyController extends Controller
             return view('companies.index', [ 'std' => $show_search]);
            }
            else {
-            $show_std = [];
-            foreach($std as $elem) {
-                $this_year=0;  
-                foreach($show_year as $id=>$year){
-                    if($elem->years_id===$id){
-                      $this_year = $year;
-                    }
-                }
-                array_push($show_std,[$elem->name,$this_year]);
-            }
+            // $show_std = [];
+            // dd($std,$show_year[1], $std[0]->path);
+            // foreach($std as $elem) {
+            //     $this_year=0;  
+            //     foreach($show_year as $id=>$year){
+            //         if($elem->years_id===$id){
+            //           $this_year = $year;
+            //         }
+            //     }
+            //     array_push($show_std,[$elem->name,$this_year]);
+            // }
 
-            return view('companies.index', [ 'std' => $show_std]);
+            return view('companies.index', [ 'std' => $std]);
            }
     }
 }

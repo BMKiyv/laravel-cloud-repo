@@ -14,22 +14,6 @@
             <a href="{{route('std-download',['std'=>$std,'year'=>$year,'name'=>$el->filename])}}" style="display: contents;"><button class="btn btn-success col-2 mr-2">Скачати</button></a>
             <a href="{{route('std-delete',['std'=>$std,'year'=>$year,'name'=>$el->filename])}}" style="display: contents;"><button class="btn btn-danger col-2 mr-2">Видалити</button></a>
             <a href="{{route('view',['std'=>$std,'year'=>$year,'name'=>$el->filename])}}" style="display: contents;"><button class="btn btn-info col-2">Подивитись</button></a>
-
-
-            {{-- <a href="{{ route('companies.edit', ['company' => $company->id]) }}"
-                class="btn btn-info btn-sm float-left mr-1">
-                 <i class="fas fa-pencil-alt"></i>
-             </a> --}}
-
-            @if (count($errors) > 0)
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-       </div>
-   @endif
     </div>
     </div>
 @endforeach
@@ -40,19 +24,14 @@
     @csrf
     <div class="form-group col-6">
         <label for="name">Виберіть файл:</label>
-        <input class="form-control" type="file" id="name" name="file" value="" placeholder="Виберіть файл">
-            @error('file')
-                <span class="text-danger">{{ $message }}</span>
-            @enderror
+        <input class="@error('name') is-invalid @enderror @error('file') is-invalid @enderror form-control" type="file" id="name" name="file" value="" placeholder="Виберіть файл">
     </div>
     @if (count($errors) > 0)
-    <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
+                <li class="text-danger">{{ $error }}</li>
             @endforeach
         </ul>
-    </div>
 @endif
     <a href="{{route('std-update',['std'=>$std, 'year'=>$year])}}"><button type="submit" class="btn btn-primary mt-3">Додати</button></a>
 </form>
@@ -66,7 +45,7 @@
                     type="text" name="name"
                     placeholder="частина або повна назва">
             </div>
-            <button type="submit" class="btn btn-success col-2 mt-3 fileinput-button dz-clickable">Фільтрувати</button>
+            <button type="submit" class="btn mt-3 btn-secondary">Фільтрувати</button>
         </div>
        
     </form>

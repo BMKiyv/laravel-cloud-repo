@@ -24,17 +24,12 @@ class UpdateStdRequest extends FormRequest
     public function rules()
     {
         return [           
-            'email' => 'required',
-            'password' => 'required',
-            'subject' => 'min:3|max:30'
+            'name' => 'required'
                 ];
     }
     public function messages() {
         return [
-            'email.required' => 'Поле електронна пошта є обов\'язковим',
-            'password.required' => 'Поле пароль є обов\'язковим',
-            'subject.min' => 'Мінімальна кількість символів - 3'
-            
+            'name.required' => 'Виберіть файл. Файл не вибрано',           
         ];
     }
 }

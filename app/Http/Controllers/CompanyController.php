@@ -7,9 +7,9 @@ use App\Models\Std;
 class CompanyController extends Controller
 {
     public function index () {
-        $std = Std::paginate(2);
+        $std = Std::paginate(4);
         if (isset($_GET['name'])){            
-            $show_std = Std::where('name', 'LIKE', "%{$_GET['name']}%")->paginate(2);
+            $show_std = Std::where('name', 'LIKE', "%{$_GET['name']}%")->paginate(4);
             return view('companies.index', [ 'std' => $show_std]);
            }
            else {

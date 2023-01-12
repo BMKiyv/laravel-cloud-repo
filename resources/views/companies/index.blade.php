@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('title', 'All Companies')
 @section('content')
-<div>Список всіх зареєстрованих підприємств:</div>
+<h3>Список всіх зареєстрованих підприємств:</h3>
 @if (count($std)<1)
     <div>Хмм...Нічого не знайдено.</div>
     <img src="/images/whatever.png" alt="whatever">

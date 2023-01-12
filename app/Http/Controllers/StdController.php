@@ -30,8 +30,7 @@ class StdController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update (Request $request, $year, $std) {
-
-        $fileName= $request->file?$request->file->getClientOriginalName():'';
+        $fileName = $request->file?$request->file->getClientOriginalName():'';
        $show_std = Std::where('name',$std)->get()[0];
         $path = $show_std->path;//1
         $id_std = $show_std->id;
@@ -42,7 +41,13 @@ class StdController extends Controller
                $elem===$fileName? $truth = false: $truth = true;
             }             
         }
-        if($truth){
+        if($fileName === ''){
+            return back()
+            ->withErrors(['name'=>'Файл не вибрано'])
+            ->with('file', $fileName);
+        }
+
+           elseif($truth){
             $new_file = new File();
             $new_file->path = $path;
             $new_file->filename = $fileName;
@@ -55,9 +60,10 @@ class StdController extends Controller
             ->with('success','Файл було успішно завантажено')
             ->with('file', $fileName);
         }
+
         else{
             return back()
-            ->with('error','The file is exist already')
+            ->withErrors(['file'=>'Файл з такою назвою тут вже існує'])
             ->with('file', $fileName);
         }
         

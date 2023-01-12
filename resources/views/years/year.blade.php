@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('title', 'Year ' . $year)
 @section('content')
-<div>Підприємства зареєстровані в {{$year}}:</div>
+<h3>Підприємства зареєстровані в {{$year}}:</h3>
 @if (count($std)<1)
     <div>Хмм...Нічого не знайдено.</div>
     <img src="/images/whatever.png" alt="whatever">
@@ -13,7 +13,7 @@
 @endforeach
 <div>{{$std->links()}}</div>
 @endif
-<h3>Створити нове зареєстроване підрпиємство</h3>
+<h4>Створити нове зареєстроване підрпиємство</h4>
 <form class="sendform" action="{{route('years.store',$year)}}" method="post">
     @csrf
     <div class="form-group">

@@ -29,6 +29,7 @@ class StdController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function update (Request $request, $year, $std) {
         $fileName = $request->file?$request->file->getClientOriginalName():'';
        $show_std = Std::where('name',$std)->get()[0];
@@ -69,6 +70,7 @@ class StdController extends Controller
         
 
     }
+
     public function delete (Request $request, $year, $std) {
         $filename = $request->query()['name'];
         $show_std = Std::where('name',$std)->get()[0];
@@ -80,6 +82,7 @@ class StdController extends Controller
         ->with('success','Файл було успішно deleted')
         ->with('file', $filename);
     }
+
     public function download (Request $request,$year,$std) {
         $filename = $request->query()['name'];
         $filename = $filename;
@@ -88,8 +91,8 @@ class StdController extends Controller
         
         return Storage::download($path . '/' . $filename);
     }
-    public function view(Request $request)
-    {
+
+    public function view(Request $request){
         $name = $request->query()['name'];
         $std = $request->query()['std'];
         $year = $request->query()['year'];

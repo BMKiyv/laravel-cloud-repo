@@ -123,3 +123,20 @@ a{
 .background-embed{
     background-image: url('../../public/images/back.jpg');
 }
+.with-tags{
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 5px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: var(--bs-gray-500);
+}
+.tags{
+    border-radius: 5px;
+    background-color:cadetblue;
+    border: 1px solid antiquewhite;
+    color: antiquewhite;
+    margin-left: 10px;
+    padding: 8px;
+}

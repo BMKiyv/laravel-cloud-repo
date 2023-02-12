@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\File;
 use App\Models\Std;
+use App\Models\Tag;
 use App\Models\Year;
 
 class DatabaseSeeder extends Seeder
@@ -25,5 +26,6 @@ class DatabaseSeeder extends Seeder
         // ]);
             Year::factory(1)->create();
             Std::factory(1)->create();
+            Tag::factory(1)->create();
     }
 }

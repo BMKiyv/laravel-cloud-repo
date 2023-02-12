@@ -7,8 +7,13 @@
     <img src="/images/whatever.png" alt="whatever">
 @else
     @foreach ($std as $el)
-    <div class="data-container">
+    <div class="data-container with-tags">
        <a href="{{ '/years' . '/' . $year . '/' . $el->name}}"> <div>{{$el->name}}</div></a>
+       <div>
+       @foreach($el->tags as $elem)
+       <span class="tags">{{$elem->title}}</span>
+       @endforeach
+    </div>
     </div>
 @endforeach
 <div>{{$std->links()}}</div>

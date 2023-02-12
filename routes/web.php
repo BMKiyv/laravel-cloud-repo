@@ -24,9 +24,6 @@ Route::resource('years', YearsController::class);
 
 Route::get('/about', [AboutController::class,'about']);
 Route::get('allstds', [CompanyController::class,'index']);
-// Route::get('/years',[YearsController::class, 'index'])->name('years');
-// Route::get('/years/{year}',[YearsController::class, 'show'])->name('years.show');
-// Route::post('/years/{year}/update',[YearsController::class,'store'])->name('years.store');
 
 Route::get('/years/{year}/{std}',[StdController::class,'index'])->name('stds.index');
 Route::post('/years/{year}/{std}/update',[StdController::class,'update'])->name('std.update');
@@ -35,5 +32,4 @@ Route::get('/years/{year}/{std}/download',[StdController::class,'download'])->na
 
 Route::get('file-view', [StdController::class, 'view'])->name('view');
 
-//Route::resource('/companies', 'CompanyController');
 

@@ -11,8 +11,8 @@
     <div class="data-container">
        <div class="row-file">
             <div class="col-5">{{$el->filename}}</div>
-            <a href="{{route('std-download',['std'=>$std,'year'=>$year,'name'=>$el->filename])}}" style="display: contents;"><button class="btn btn-success col-2 mr-2">Скачати</button></a>
-            <a href="{{route('std-delete',['std'=>$std,'year'=>$year,'name'=>$el->filename])}}" style="display: contents;"><button class="btn btn-danger col-2 mr-2">Видалити</button></a>
+            <a href="{{route('std.download',['std'=>$std,'year'=>$year,'name'=>$el->filename])}}" style="display: contents;"><button class="btn btn-success col-2 mr-2">Скачати</button></a>
+            <a href="{{route('std.delete',['std'=>$std,'year'=>$year,'name'=>$el->filename])}}" style="display: contents;"><button class="btn btn-danger col-2 mr-2">Видалити</button></a>
             <a href="{{route('view',['std'=>$std,'year'=>$year,'name'=>$el->filename])}}" style="display: contents;"><button class="btn btn-info col-2">Подивитись</button></a>
     </div>
     </div>
@@ -20,7 +20,7 @@
 <div>{{$show_files->links()}}</div>
 @endif
 <h3 class="mt-5">Додати нові документи:</h3>
-<form class="sendform" action="{{route('std-update',['std'=>$std, 'year'=>$year])}}" method="POST" enctype="multipart/form-data">
+<form class="sendform" action="{{route('std.update',['std'=>$std, 'year'=>$year])}}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="form-group col-6">
         <label for="name">Виберіть файл:</label>
@@ -33,7 +33,7 @@
             @endforeach
         </ul>
 @endif
-    <a href="{{route('std-update',['std'=>$std, 'year'=>$year])}}"><button type="submit" class="btn btn-primary mt-3">Додати</button></a>
+    <a href="{{route('std.update',['std'=>$std, 'year'=>$year])}}"><button type="submit" class="btn btn-primary mt-3">Додати</button></a>
 </form>
 <div class="mt-5">
 <form action="">
@@ -49,5 +49,13 @@
         </div>
        
     </form>
+    <div style="width: 100%; height: 300px;"><?php
+   //  $file = fopen('http://localhost:8000/storage/2016/[sobi complex]/Plan-realization-cyber-strategy.pdf','r'); 
+    // dump($file);
+    // while(!feof($file)){
+    //   echo  fgets($file).'<br>';
+    // } 
+    // fclose($file);
+    ?></div>
 </div>
 @endsection

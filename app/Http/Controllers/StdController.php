@@ -78,7 +78,9 @@ class StdController extends Controller
       $file_id = File::where('filename',$filename)->get()[0]->id;
       File::find($file_id)->delete();
         Storage::disk('public')->delete($path . '/' . $filename);
-        return back()
+        // $files = File::where('std_id',$show_std->id)->orderBy('filename');
+        // dd($year,$std,$files);
+        return to_route('stds.index',['year'=>$year, 'std' => $std,'show_files'=> File::where('std_id',$show_std->id)->orderBy('filename')->paginate(2)])
         ->with('success','Файл було успішно deleted')
         ->with('file', $filename);
     }

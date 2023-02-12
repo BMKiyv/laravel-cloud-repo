@@ -29,7 +29,8 @@ class YearsController extends Controller
        }
         return view('years.year', ['std'=>$show_std, 'year'=>$show_year]);
     }
-    public function store (UpdateYearsRequest $request, $year) {
+    public function store (UpdateYearsRequest $request) {
+        $year = $request->query()['year'];
         $std = new Std();
         $id_year = Year::where('year', $year)->get('id')[0]->id;
         $new_path = $year . "/" . $request->input('name');

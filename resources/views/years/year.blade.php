@@ -14,14 +14,14 @@
 <div>{{$std->links()}}</div>
 @endif
 <h4>Створити нове зареєстроване підрпиємство</h4>
-<form class="sendform" action="{{route('years.store',$year)}}" method="post">
+<form class="sendform" action="{{route('years.store',['year'=>$year])}}" method="post">
     @csrf
     <div class="form-group">
         <div class="form-group col-6">
             <label for="name">Назва папки</label>
             <input type="text" class="form-control" id="name" name="name" value="" placeholder="Введіть назву папки">
         </div>
-        <a href="{{route('years.store',$year)}}"><button type="submit" class="btn btn-primary mt-3">Створити</button></a>
+        <a href="{{route('years.store',['year'=>$year])}}"><button type="submit" class="btn btn-primary mt-3">Створити</button></a>
     </div>
    
 </form>
